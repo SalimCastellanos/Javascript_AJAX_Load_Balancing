@@ -11,17 +11,17 @@
 */
 
 var configNodes = {
-    nodes: [
-        {
-            url: "http://localhost:9091",
-            weight : 2
-        },
-        {
-            url: "http://localhost:9092",
-            weight : 3
-        }
-    ],
-    algoritm: "round_robin"
+        nodes: [
+            {
+                url: "http://localhost:9091",
+                weight : 2
+            },
+            {
+                url: "http://localhost:9092",
+                weight : 3
+            }
+        ],
+        algoritm: "round_robin"
 }
 
 var resources = [
