@@ -3,11 +3,17 @@
 * 
 * Author  :  Salim A. Castellanos R.
 * Company :  Quipux Innova.
-* Version :  0.0.1
+* Version :  0.0.3
 *
 */
 
-var $CO.COM.QUIPUX.AJAX = {};
+var $CO = {
+    COM:{
+        QUIPUX:{
+            AJAX:{}
+        }
+    }
+};
 
 $CO.COM.QUIPUX.AJAX.BALANCING = function(resources, config){
     
@@ -27,14 +33,14 @@ $CO.COM.QUIPUX.AJAX.BALANCING = function(resources, config){
     /*
     * Metodo de balanceo Round-Robin
     */
-    function round_robin(url){
-        if(donde<config.servers.length){
-            donde++;
+    balancing.round_robin = function (url){
+        if(donde<(config.nodes.length-1)){
+            donde=donde+1;
         }
         else{
             donde = 0;
         }
-        return config.servers[donde].url + url;
+        return config.nodes[donde].url + url;
     }
         
     /*
@@ -60,7 +66,7 @@ $CO.COM.QUIPUX.AJAX.BALANCING = function(resources, config){
         };
     }
 
-    for(var i=0; i<servicios.length; i++){
+    for(var i=0; i<resources.length; i++){
         var servicio = resources[i];
         agregarServicio(servicio);
     }
@@ -85,3 +91,42 @@ $CO.COM.QUIPUX.AJAX.BALANCING = function(resources, config){
     return balancing;
 
 };
+
+/*
+var nodes = [
+    {
+        url: "http://localhost:9091",
+        weight : 2
+    },
+    {
+        url: "http://localhost:9092",
+        weight : 3
+    }
+];
+
+var configNodes = {
+    nodes: nodes,
+    algoritm: "round_robin"
+}
+
+var resources = [
+    {
+        name: "getPosts",
+        url : "/posts/",
+        method : "GET",
+        async : true       
+    }
+];
+
+var servicios = $CO.COM.QUIPUX.AJAX.BALANCING(resources, configNodes);
+for(var i=0; i<5; i++){
+    servicios.resources.getPosts({},
+                    function(result){
+                        alert("entro exito: "+result);
+                    },
+                    function(err){
+                        alert("entro exito: "+result);
+                    }
+                  );
+}
+*/
