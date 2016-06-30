@@ -10,19 +10,17 @@
 * Se crean las variables que encierran la configuración inicial
 */
 
-var nodes = [
-    {
-        url: "http://localhost:9091",
-        weight : 2
-    },
-    {
-        url: "http://localhost:9092",
-        weight : 3
-    }
-];
-
 var configNodes = {
-    nodes: nodes,
+    nodes: [
+        {
+            url: "http://localhost:9091",
+            weight : 2
+        },
+        {
+            url: "http://localhost:9092",
+            weight : 3
+        }
+    ],
     algoritm: "round_robin"
 }
 
