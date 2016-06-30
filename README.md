@@ -44,7 +44,7 @@ for(var i=0; i<5; i++){
                         alert("entro exito: "+result);
                     },
                     function(err){
-                        alert("entro exito: "+result);
+                        alert("entro error: "+err);
                     }
                   );
 }
