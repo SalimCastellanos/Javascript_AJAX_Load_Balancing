@@ -7,20 +7,81 @@
 *
 */
 
-var co.com.quipux.balancing = function(config){
+var $CO.COM.QUIPUX.AJAX = {};
+
+$CO.COM.QUIPUX.AJAX.BALANCING = function(resources, config){
     
     var balancing = this;
     
-    balancing.config = config;
+    var resources = resources;
+    var config = config;
+    var donde = 0;
     
-    balancing.setConfig = function(config){
-        this.config = config;
+    /*
+    * Función que invoca la funcionalidad de balanceo de carga.
+    */
+    function callBalancing(url){
+        return balancing[config.algoritm](url)
+    }
+    
+    /*
+    * Metodo de balanceo Round-Robin
+    */
+    function round_robin(url){
+        if(donde<config.servers.length){
+            donde++;
+        }
+        else{
+            donde = 0;
+        }
+        return config.servers[donde].url + url;
+    }
+        
+    /*
+    * Se inicia la creación de los objetos AJAX
+    */
+    
+    balancing.resources = {}
+    
+    agregarServicio = function(servicio){
+        balancing.resources[servicio.name] = function(data,callSuccess,callError){
+            $.ajax({
+            url: callBalancing(servicio.url),
+            type: servicio.method,
+            async: servicio.async,
+            data: data,
+            success: function(respuesta) {
+                callSuccess(respuesta);
+            },
+            error: function(err) {
+                callError(err);
+            }
+        });
+        };
+    }
+
+    for(var i=0; i<servicios.length; i++){
+        var servicio = resources[i];
+        agregarServicio(servicio);
+    }
+
+    
+    balancing.setConfig = function(config1){
+        config = config1;
     }
     
     balancing.getConfig = function(){
-        return balancing.config;
+        return config;
     }
     
+    balancing.setResources = function(resources1){
+        resources = resources1;
+    }
     
-    
+    balancing.getResources = function(){
+        return resources;
+    }
+
+    return balancing;
+
 };
