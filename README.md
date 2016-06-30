@@ -1,1 +1,1 @@
-# Javascript_Load_Balancing
+# Javascript_AJAX_Load_Balancing
