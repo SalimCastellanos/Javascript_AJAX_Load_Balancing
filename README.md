@@ -44,7 +44,7 @@ var resources = [
 ];
 
 var servicios = $UTIL.AJAX.BALANCING(resources, configNodes);
-for(var i=0; i<5; i++){
+
     servicios.resources.getComents({},
                     function(result){
                         alert("entro exito: "+result);
@@ -53,7 +53,6 @@ for(var i=0; i<5; i++){
                         alert("entro exito: "+result);
                     }
                   );
-}
 
 						   
 ```
