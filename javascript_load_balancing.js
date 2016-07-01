@@ -7,15 +7,11 @@
 *
 */
 
-var $CO = {
-    COM:{
-        QUIPUX:{
-            AJAX:{}
-        }
-    }
+var $UTIL = {
+        AJAX:{}
 };
 
-$CO.COM.QUIPUX.AJAX.BALANCING = function(resources, config){
+$UTIL.AJAX.BALANCING = function(resources, config){
     
     var balancing = this;
     
@@ -91,48 +87,3 @@ $CO.COM.QUIPUX.AJAX.BALANCING = function(resources, config){
     return balancing;
 
 };
-
-/*
-var nodes = [
-    {
-        url: "http://localhost:9091",
-        weight : 2
-    },
-    {
-        url: "http://localhost:9092",
-        weight : 3
-    }
-];
-
-var configNodes = {
-    nodes: nodes,
-    algoritm: "round_robin"
-}
-
-var resources = [
-    {
-        name: "getPosts",
-        url : "/posts/",
-        method : "GET",
-        async : true       
-    },
-    {
-        name: "getComents",
-        url : "/comments/",
-        method : "GET",
-        async : true       
-    }
-];
-
-var servicios = $CO.COM.QUIPUX.AJAX.BALANCING(resources, configNodes);
-for(var i=0; i<5; i++){
-    servicios.resources.getComents({},
-                    function(result){
-                        alert("entro exito: "+result);
-                    },
-                    function(err){
-                        alert("entro exito: "+result);
-                    }
-                  );
-}
-*/

@@ -10,18 +10,20 @@
 * Se crean las variables que encierran la configuración inicial
 */
 
+var nodes = [
+    {
+        url: "http://localhost:9091",
+        weight : 2
+    },
+    {
+        url: "http://localhost:9092",
+        weight : 3
+    }
+];
+
 var configNodes = {
-        nodes: [
-            {
-                url: "http://localhost:9091",
-                weight : 2
-            },
-            {
-                url: "http://localhost:9092",
-                weight : 3
-            }
-        ],
-        algoritm: "round_robin"
+    nodes: nodes,
+    algoritm: "round_robin"
 }
 
 var resources = [
@@ -39,18 +41,14 @@ var resources = [
     }
 ];
 
-/*
-* Ejemplo de como se consume un servicio con balanceo de carga Round-Robin
-*/
-
-var servicios = $CO.COM.QUIPUX.AJAX.BALANCING(resources, configNodes);
+var servicios = $UTIL.AJAX.BALANCING(resources, configNodes);
 for(var i=0; i<5; i++){
-    servicios.resources.getPosts({},
+    servicios.resources.getComents({},
                     function(result){
                         alert("entro exito: "+result);
                     },
                     function(err){
-                        alert("entro error: "+err);
+                        alert("entro exito: "+result);
                     }
                   );
 }
