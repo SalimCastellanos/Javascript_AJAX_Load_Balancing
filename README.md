@@ -1,4 +1,4 @@
-# Javascript_AJAX_Load_Balancing V 0.0.3
+# Javascript_AJAX_Load_Balancing V 0.0.4
 
 ## Libreria javascript para el consumo de servicios AJAX más balanceo de carga utilizando Round-Robin
 
