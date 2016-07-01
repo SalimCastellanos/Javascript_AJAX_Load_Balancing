@@ -2,6 +2,8 @@
 
 ## Libreria javascript para el consumo de servicios AJAX más balanceo de carga utilizando Round-Robin
 
+### Necesita JQUERY 1.x
+
 ### Examples
 
 ```javascript
