@@ -115,12 +115,18 @@ var resources = [
         url : "/posts/",
         method : "GET",
         async : true       
+    },
+    {
+        name: "getComents",
+        url : "/comments/",
+        method : "GET",
+        async : true       
     }
 ];
 
 var servicios = $CO.COM.QUIPUX.AJAX.BALANCING(resources, configNodes);
 for(var i=0; i<5; i++){
-    servicios.resources.getPosts({},
+    servicios.resources.getComents({},
                     function(result){
                         alert("entro exito: "+result);
                     },

@@ -30,6 +30,12 @@ var resources = [
         url : "/posts/",
         method : "GET",
         async : true       
+    },
+    {
+        name: "getComents",
+        url : "/comments/",
+        method : "GET",
+        async : true       
     }
 ];
 
@@ -52,4 +58,4 @@ for(var i=0; i<5; i++){
 						   
 ```
 
-### Más información contactar a salimsalim4@gmil.com
+### Más información contactar a salimsalim4@gmail.com
