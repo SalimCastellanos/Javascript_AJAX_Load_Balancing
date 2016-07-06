@@ -55,6 +55,10 @@ var servicios = $UTIL.AJAX.BALANCING(resources, configNodes);
                     }
                   );
 
+Últimas mejoras.
+
+- Se agrego verificación automatica de nodos cada 10 segundos.
+- Se modifico el balanceador para que descarte nodos inactivos.
 						   
 ```
 
