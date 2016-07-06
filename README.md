@@ -23,21 +23,24 @@ var configNodes = {
             weight : 3
         }
     ],
-    algoritm: "round_robin"
+    algoritm: "round_robin",
+    serviceStatus: "/posts/"
 }
 
 var resources = [
     {
-        name: "getPosts",
-        url : "/posts/",
+        name   : "getPosts",
+        url    : "/posts/",
         method : "GET",
-        async : true       
+        async  : false,
+        cache  : false
     },
     {
-        name: "getComents",
-        url : "/comments/",
+        name   : "getComents",
+        url    : "/coments/",
         method : "GET",
-        async : true       
+        async  : false,
+        cache  : false     
     }
 ];
 
