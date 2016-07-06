@@ -49,6 +49,26 @@ $UTIL.AJAX.BALANCING = function(resources, config){
          
          return auxUrl;
     }
+    
+    balancin.otro = function(servicio){
+        
+        servicio
+        
+        return url;
+    }
+    
+    var recorrioX = config.nodes.length;
+    var recorridoY = 1;
+    function verificar(){
+        if(recorriY>= recorridoX){
+            recorridoY = 1;
+            return false;
+        }
+        else{
+            recorridoY++;
+            return true;
+        }
+    }
         
     /*
     * Se inicia la creación de los objetos AJAX
@@ -60,6 +80,7 @@ $UTIL.AJAX.BALANCING = function(resources, config){
         balancing.resources[servicio.name] = function(data,callSuccess,callError){
            
             var serUrl = callBalancing(servicio);
+           // alert("server que mando: "+serUrl);
             var hh = 22;
             $.ajax({
             url: serUrl,
@@ -71,11 +92,17 @@ $UTIL.AJAX.BALANCING = function(resources, config){
                 callSuccess(respuesta);
             },
             error: function(err) {
+                if(verificar()){
+                    //alert("mando a otro server...");
+                  balancing.resources[servicio.name]();
+                }
                 callError(err);
             }
         });
         };
     }
+ 
+    
     
     balancing.setConfig = function(config1){
         config = config1;
